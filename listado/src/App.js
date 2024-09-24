@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+
+import { Usuario } from './components/Usuario/Usuario'; /*Se declara como un objeto para poder traer varios componentes si es necesario*/
+import { Card } from './components/Card/Card';
 
 function App() {
+
+/*Las propiedades se pasan desde aca hacia donde las estemos utilizando, el orden da igual de los objetos*/
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div > 
+      <Usuario nombre="Osvaldo" edad={20} nacionalidad="Argentina"/>
+      <Usuario nombre="Maria" edad={30} nacionalidad="Uruguay"/>
+      <Card/>
     </div>
   );
 }
+
 
 export default App;

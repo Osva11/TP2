@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ItemList from '../ItemList/ItemList';
 import DeleteAllButton from '../DeleteAllButton/DeleteAllButton';
-
+import '../../App.css';
 
 
 
@@ -83,36 +83,34 @@ const Productos = () => {
 
   return (
 
-    <div>
-      <h2>Carrito de Compras</h2>
+    <div className="container">
+
+      <h1>Carrito de Compras</h1>
       <input
         type="text"
         value={item}
         onChange={handleInputChange}
         placeholder="Ingrese un ítem"
       />
-
-      <input
-        type="number"
-        value={cantidad}
-        onChange={handleCantidadChange}
-        placeholder="Cantidad"
-        min="1" 
-      />
-
+        <input
+          type="number"
+          value={cantidad}
+          onChange={handleCantidadChange}
+          placeholder="Cantidad"
+          min="1" 
+        />
       <button
         onClick={addItem}>
         {isEditing ? 'Guardar Cambios' : 'Agregar a la lista'}
       </button>
 
-      {items.length > 0 && <h3>Lista de Compras</h3>}
+      {items.length > 0 && <h2>Lista de Compras</h2>}
 
       {items.length > 0 && (
         <DeleteAllButton onDeleteAll={deleteAllItems} />
-        )}
+      )}
       
       <ItemList items={items} onDeleteItem={deleteItem} onEditItem={editItem} //pasamos como propiedad la funcion onDeleteItem
-     
       />
     </div>
   );

@@ -1,0 +1,133 @@
+/* estilos globales para el carrito de compras */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+  }
+  
+  h1 {
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+  }
+  h2
+  {
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 25px;
+  }
+  
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilos para los inputs y botones */
+  input[type="text"],
+  input[type="number"] {
+    width: 97%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease,box-shadow 0.3s ease;
+    margin-top: 10px;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4); /* Sombra más pronunciada en hover */
+  }
+  
+  /* Estilo del botón de "Borrar todos los items" */
+  button.delete-all-btn {
+    background-color: #ff5c5c;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  button.delete-all-btn:hover {
+    background-color: #ff3333;
+  }
+  
+  /* Estilos para la lista de items */
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  li:last-child {
+    border-bottom: none;
+  }
+  
+  li button {
+    margin-left: 10px;
+  }
+  
+  li button:first-of-type {
+    background-color: #ff5c5c;
+  }
+  
+  li button:first-of-type:hover {
+    background-color: #ff3333;
+  }
+  
+  li button:last-of-type {
+    background-color: #008CBA;
+  }
+  
+  li button:last-of-type:hover {
+    background-color: #0079a5;
+  }
+  
+  h3 {
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .lista-item {
+    display: flex;               /* Flexbox para alinear los elementos */
+    justify-content: space-between; /* Texto a la izquierda y botones a la derecha */
+    align-items: center;          /* Alinea verticalmente los elementos al centro */
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    background-color: #f9f9f9;
+    margin-bottom: 10px;
+  }
+
+
+  /* Estilo para el nombre del item */
+.item-nombre {
+    flex-grow: 1;                 /* El texto toma el espacio disponible */
+    margin-right: 20px;           /* Espacio entre el texto y los botones */
+  }
+  
+  .botones {
+    display: flex;                /* Agrupa los botones con Flexbox para poder manejar solo los botones */
+    gap: 10px;                    /* Espacio entre los botones */
+  }

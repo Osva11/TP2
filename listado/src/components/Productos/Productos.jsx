@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import ItemList from '../ItemList/ItemList';
+import DeleteAllButton from '../DeleteAllButton/DeleteAllButton';
+
+
+
+
 const Productos = () => {
+
+  
   // Estado para el input y la lista de items
   const [item, setItem] = useState('');
   const [items, setItems] = useState([]);
@@ -8,6 +15,9 @@ const Productos = () => {
   const [isEditing, setIsEditing] = useState(false); // Para controlar si estamos editando
   const [currentItemIndex, setCurrentItemIndex] = useState(null); // Para saber qué ítem se está editando, guardando el index.
  
+
+
+
   // Función para manejar el cambio en el input
   const handleInputChange = (e) => {
     setItem(e.target.value);
@@ -16,6 +26,9 @@ const Productos = () => {
   const handleCantidadChange = (e) => {
     setCantidad(e.target.value);
   };
+
+
+
 
   // Función para agregar el item a la lista
   const addItem = () => {
@@ -42,9 +55,14 @@ const Productos = () => {
       alert('No se puede agregar un ítem vacío');
     }
   };
+
+
   //Función para eliminar elementos de la lista
   const deleteItem = (index) => {
     setItems(items.filter((_, i) => i !== index));
+
+
+
   };
  
     // Función para editar un ítem
@@ -57,6 +75,9 @@ const Productos = () => {
       setCurrentItemIndex(index);
     };
 
+    const deleteAllItems = () => {
+      setItems([]); // Vaciamos el array de items
+    };
 
 
 
@@ -86,8 +107,12 @@ const Productos = () => {
 
       {items.length > 0 && <h3>Lista de Compras</h3>}
 
-      <ItemList items={items} onDeleteItem={deleteItem} onEditItem={editItem} //pasamos como propiedad la funcion onDeleteItem
+      {items.length > 0 && (
+        <DeleteAllButton onDeleteAll={deleteAllItems} />
+        )}
       
+      <ItemList items={items} onDeleteItem={deleteItem} onEditItem={editItem} //pasamos como propiedad la funcion onDeleteItem
+     
       />
     </div>
   );

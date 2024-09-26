@@ -4,14 +4,18 @@ const Productos = () => {
   // Estado para el input y la lista de items
   const [item, setItem] = useState('');
   const [items, setItems] = useState([]);
+  const [cantidad, setCantidad] = useState(1);
   const [isEditing, setIsEditing] = useState(false); // Para controlar si estamos editando
-  const [currentItemIndex, setCurrentItemIndex] = useState(null); // Para saber qué ítem se está editando
+  const [currentItemIndex, setCurrentItemIndex] = useState(null); // Para saber qué ítem se está editando, guardando el index.
  
   // Función para manejar el cambio en el input
   const handleInputChange = (e) => {
     setItem(e.target.value);
   };
 
+  const handleCantidadChange = (e) => {
+    setCantidad(e.target.value);
+  };
 
   // Función para agregar el item a la lista
   const addItem = () => {
@@ -19,7 +23,7 @@ const Productos = () => {
       if (isEditing) {
         // Editar el ítem existente
         const updatedItems = items.map((it, index) =>
-          index === currentItemIndex ? item : it  //Busca en todo el arreglo el valor de indice que coincide con el que pasamos y lo reemplaza por nuestro nuevo valor.
+          index === currentItemIndex ? { nombre: item, cantidad } : it //Busca en todo el arreglo el valor de indice que coincide con el que pasamos y lo reemplaza por nuestro nuevo valor.
         );
         setItems(updatedItems);
         setIsEditing(false);
@@ -28,9 +32,10 @@ const Productos = () => {
       else
       {
         // Agregar un nuevo ítem
-        setItems([...items, item]);
+        setItems([...items, { nombre: item, cantidad }]);
       }
       setItem(''); // Limpiar el input
+      setCantidad(1); //Resetear la cantidad a 1
     }
      else 
      {
@@ -44,8 +49,10 @@ const Productos = () => {
  
     // Función para editar un ítem
     const editItem = (index) => {
-      setItem(items[index]); //carga en el campo de entrada el valor del arreglo que coincida con ese vector. Después cuando lo editas pasa la función de hanlde y finalmente 
-                            // cuando aceptas presionando el boton va hacia addItem.
+      
+      setItem(items[index].nombre); //carga en el campo de entrada el valor del arreglo que coincida con ese vector. Después cuando lo editas pasa la función de hanlde y finalmente 
+                          // cuando aceptas presionando el boton va hacia addItem.
+      setCantidad(items[index].cantidad);
       setIsEditing(true);
       setCurrentItemIndex(index);
     };
@@ -54,6 +61,7 @@ const Productos = () => {
 
 
   return (
+
     <div>
       <h2>Carrito de Compras</h2>
       <input
@@ -62,10 +70,24 @@ const Productos = () => {
         onChange={handleInputChange}
         placeholder="Ingrese un ítem"
       />
-      <button onClick={addItem}>Agregar a la lista</button>
 
+      <input
+        type="number"
+        value={cantidad}
+        onChange={handleCantidadChange}
+        placeholder="Cantidad"
+        min="1" 
+      />
+
+      <button
+        onClick={addItem}>
+        {isEditing ? 'Guardar Cambios' : 'Agregar a la lista'}
+      </button>
+
+      {items.length > 0 && <h3>Lista de Compras</h3>}
 
       <ItemList items={items} onDeleteItem={deleteItem} onEditItem={editItem} //pasamos como propiedad la funcion onDeleteItem
+      
       />
     </div>
   );
